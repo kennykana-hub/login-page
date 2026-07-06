@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Continuum — Sign in</title>
+<title>Kenny's Ad Prompt Master — Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -268,13 +268,13 @@
         <path class="arc-line active" d="M -50,420 Q 300,250 650,420" />
       </svg>
     </div>
-    <div class="wordmark">contin<span>u</span>um</div>
+    <div class="wordmark">Kenny's <span>Ad</span> Prompt Master</div>
     <div class="brand-copy">
-      <h1>Pick up exactly where your thinking left off.</h1>
-      <p>Continuum keeps your notes, tasks, and threads in one continuous line — sign in to open your workspace.</p>
+      <h1>Welcome to Kenny's Ad Prompt Master</h1>
+      <p>Sign in to open your workspace and pick up exactly where you left off.</p>
     </div>
     <div class="brand-foot">
-      <span>Trusted by focused teams</span>
+      <span>&copy; 2026 Kenny. All rights reserved.</span>
     </div>
   </section>
 
@@ -285,13 +285,6 @@
 
       <div id="g_id_signin_container"></div>
 
-      <div class="divider">or</div>
-
-      <div class="fallback-note">
-        This page is wired to a real Google OAuth client ID. The Google button above will only complete sign-in from an origin (domain) added to that client's "Authorized JavaScript origins" in Google Cloud Console. Until you've added the origin you're testing from, use the demo button to preview the gated page.
-      </div>
-      <button class="demo-btn" id="demoLoginBtn">Continue with demo account</button>
-
       <p class="legal">By continuing you agree to the Terms of Service and Privacy Policy.</p>
     </div>
   </section>
@@ -299,7 +292,7 @@
 
 <div id="site">
   <header class="topbar">
-    <div class="wordmark">contin<span style="color:#C89A4B">u</span>um</div>
+    <div class="wordmark">Kenny's <span style="color:#C89A4B">Ad</span> Prompt Master</div>
     <div class="user-chip">
       <img id="userAvatar" src="" alt="" />
       <div>
@@ -331,6 +324,9 @@
     return JSON.parse(jsonPayload);
   }
 
+  // Where signed-in users get sent after login
+  const REDIRECT_URL = "https://sites.google.com/view/kennys-ad-prompt-master/kenny-ad-prompt-master";
+
   function enterSite(user){
     document.getElementById('login-screen').classList.add('hidden');
     document.getElementById('login-screen').style.display = 'none';
@@ -338,6 +334,7 @@
     document.getElementById('userEmail').textContent = user.email || '';
     document.getElementById('userAvatar').src = user.picture || 'https://api.dicebear.com/7.x/initials/svg?seed=' + encodeURIComponent(user.name || 'U');
     document.getElementById('site').classList.add('visible');
+    window.location.href = REDIRECT_URL;
   }
 
   function signOut(){
@@ -372,14 +369,6 @@
         { theme: 'outline', size: 'large', width: 320, shape: 'rectangular' }
       );
     }
-  });
-
-  document.getElementById('demoLoginBtn').addEventListener('click', function(){
-    enterSite({
-      name: 'Jordan Avery',
-      email: 'jordan@example.com',
-      picture: 'https://api.dicebear.com/7.x/initials/svg?seed=Jordan%20Avery'
-    });
   });
 
   document.getElementById('signOutBtn').addEventListener('click', signOut);
